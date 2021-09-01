@@ -1,0 +1,30 @@
+plugins {
+    id 'groovy'
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation ('org.codehaus.groovy:groovy-all:3.0.8') {
+        exclude(group: 'org.opentest4j')
+    }
+    testImplementation ('org.spockframework:spock-core:2.0-groovy-3.0') {
+        exclude(group: 'org.opentest4j')
+    }
+    testImplementation ('org.junit.jupiter:junit-jupiter-api:5.7.2') {
+        exclude(group: 'org.opentest4j')
+    }
+    testRuntimeOnly ('org.junit.jupiter:junit-jupiter-engine:5.7.2') {
+        exclude(group: 'org.opentest4j')
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
